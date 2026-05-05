@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>★彡 nein'sssite!! ☆</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&family=Permanent+Marker&display=swap');
+  :root {
+    --bg: #0b1018; --bg2: #111821; --panel: #151d2a; --border: #35415a;
+    --accent: #4d6b95; --accent2: #2f4d7c; --pink: #7f9ebc; --purple: #94a8d6;
+    --green: #8dc2b8; --text: #d9e2ef; --dim: #8b96aa; --white: #f4f8ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ body {
+  background-color: #060c14;
+  background-image: url("bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--text);
+  min-height: 100vh;
+  cursor: crosshair;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 20px;
+}
+
+.face-container {
+  position: relative;
+  width: 100%;
+  max-width: 320px; /* biar gak kegedean */
+  margin: auto;
+}
+
+/* FOTO DI DALAM LUBANG */
+.face-photo {
+  position: absolute;
+  top: 32%;     /* TURUN dikit */
+  left: 16%;    /* geser kanan dikit */
+  width: 58%;   /* lebih kecil biar pas */
+  height: 50%;  /* sesuai rasio lubang */
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* FRAME DI ATAS */
+.face-frame {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+  ::-webkit-scrollbar { width: 10px; } ::-webkit-scrollbar-track { background: #111821; } ::-webkit-scrollbar-thumb { background: var(--accent); border: 1px solid #1c2b43; }
+  .top-marquee { background: #101822; color: var(--white); font-size: 14px; padding: 3px 0; border-bottom: 2px solid var(--accent2); overflow: hidden; white-space: nowrap; }
+  .site-header { 
+  background: 
+    url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazgzeXRjMXRjanhuNjJtcDhjbzdrazN6eWh0bm04Y3I0ZWFza3NhbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/voDNhxZxi6ZLq/giphy.gif"), 
+    linear-gradient(180deg, #0c1420, #121d2d); 
+  background-size: cover; /* Agar GIF menutupi seluruh header */
+  background-blend-mode: screen; /* Efek agar hanya bagian terangnya saja yang muncul di atas warna gelap */
+  border-bottom: 3px solid var(--accent2); 
+  padding: 10px; 
+  display: flex; 
+  align-items: center; 
+  gap: 15px; 
+  position: relative; 
+  overflow: hidden; 
+}
+  .site-header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(47,77,124,0.05) 10px, rgba(47,77,124,0.05) 11px); pointer-events: none; }
+  .header-gif-placeholder { width: 120px; height: 80px; background: #101822; border: 2px solid var(--accent2); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; animation: flicker 3s infinite; }
+  .header-gif-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @keyframes flicker { 0%,100%{opacity:1} 92%{opacity:1} 93%{opacity:0.7} 95%{opacity:1} 97%{opacity:0.8} }
+.site-title { 
+  font-family: 'Permanent Marker', cursive; 
+  font-size: 42px; 
+  /* Ganti warna ke putih solid atau biru gelap agar kontras */
+  color: #ffffff; 
+  /* Menambah bayangan hitam yang tebal agar tulisan jelas */
+  text-shadow: 
+    3px 3px 0px #0c1420, 
+    -1px -1px 0px #0c1420,  
+    1px -1px 0px #0c1420,
+    -1px 1px 0px #0c1420,
+    0px 0px 8px rgba(0,0,0,0.8); 
+  letter-spacing: 2px; 
+  line-height: 1; 
+}
+
+.site-subtitle { 
+  font-family: 'Special Elite', serif; 
+  font-size: 14px; 
+
+  color: #ffffff; 
+  background-color: rgba(12, 20, 32, 0.7);
+  padding: 2px 8px;
+  display: inline-block;
+  margin-top: 4px; 
+  letter-spacing: 1px; 
+  text-shadow: 1px 1px 2px #000;
+}
+.header-right div[style*="color:var(--dim)"] {
+  color: #000000 !important;
+  font-weight: bold;
+}
+.header-right {
+  margin-left: auto;
+  text-align: right;
+  padding-right: 10px;
+}
+  .visitor-counter { background: #071017; border: 2px inset #2a3a52; padding: 4px 8px; font-size: 18px; color: var(--green); font-family: 'VT323', monospace; display: inline-block; margin-bottom: 4px; }
+  .visitor-label { 
+  font-size: 11px; 
+  color: #000000; /* Mengubah warna 'visitors' menjadi hitam */
+  font-weight: bold;
+  display: block; 
+  text-align: center; 
+}  
+  .navbar { background: #101827; border-bottom: 2px solid var(--accent); display: flex; flex-wrap: wrap; gap: 0; }
+  .navbar a { color: var(--text); text-decoration: none; padding: 6px 16px; font-size: 15px; border-right: 1px solid #273548; transition: all 0.1s; font-family: 'Special Elite', serif; letter-spacing: 1px; position: relative; }
+.navbar a:hover, .navbar a.active { 
+  background: rgba(255, 255, 0, 0.2); /* Latar kuning transparan */
+  color: #ffff00; /* Warna teks kuning neon */
+  text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00; /* Efek cahaya neon */
+  border-bottom: 2px solid #ffff00;
+}  
+  .navbar a::before { content: '✦ '; color: var(--accent); }
+.navbar a:hover::before, .navbar a.active::before { 
+  color: #ffff00; 
+}  .wrapper {
+  display: grid;
+  grid-template-columns: 180px 1fr 200px;
+  gap: 8px;
+  padding: 8px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: url("bg3.png") center/cover no-repeat, #0b1018; /* tambah ini */
+  background-blend-mode: multiply; /* tambah ini */
+}
+  .sidebar-left { display: flex; flex-direction: column; gap: 6px; }
+  .sidebar-right { display: flex; flex-direction: column; gap: 6px; }
+  .panel { background: url("bgboks.png") center/cover no-repeat, var(--panel); background-blend-mode: multiply; border: 2px solid #40506c; border-top: 2px solid #5c6d88; border-left: 2px solid #5c6d88; box-shadow: 2px 2px 0 #000, inset 0 0 0 1px rgba(255,255,255,0.08); }
+  .panel-title { background: linear-gradient(90deg, rgba(77,107,149,0.95), rgba(47,77,124,0.95)); color: #f7f8fb; font-size: 13px; padding: 4px 7px; font-family: 'Special Elite', serif; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .panel-body { padding: 8px; font-size: 13px; color: var(--text); }
+  .nav-list { list-style: none; } .nav-list li { border-bottom: 1px dashed #273548; }
+  .nav-list a { display: block; padding: 4px 6px; color: var(--text); text-decoration: none; font-size: 14px; transition: all 0.1s; }
+  .nav-list a:hover { background: #151f2d; color: var(--pink); padding-left: 12px; }
+  .nav-list a.strike { text-decoration: line-through; color: var(--dim); }
+  .main-content { display: flex; flex-direction: column; gap: 8px; }
+  .content-box { background: url("bgboks.png") center/cover no-repeat, #111b27; background-blend-mode: multiply; border: 2px solid #35455f; border-top: 2px solid #4a5c7f; border-left: 2px solid #4a5c7f; box-shadow: 2px 2px 0 #000, inset 0 0 0 1px rgba(255,255,255,0.08); padding: 10px; font-size: 14px; line-height: 1.6; color: var(--text); }
+  .content-box p { margin-bottom: 8px; }
+  .content-box a { color: var(--pink); }
+  .content-box a:hover { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  .page { display: none; } .page.active { display: block; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .profile-pic-box { background: #111822; border: 2px solid var(--accent); text-align: center; padding: 10px; font-size: 60px; line-height: 1.2; }
+  .stat-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .stat-table td { padding: 3px 6px; border-bottom: 1px dashed #27334c; }
+  .stat-table td:first-child { color: var(--pink); width: 40%; }
+  .news-item { background: #111721; border: 1px solid #22304b; border-left: 3px solid var(--accent); padding: 8px; margin-bottom: 8px; cursor: pointer; transition: all 0.1s; }
+  .news-item:hover { background: #162036; border-left-color: var(--pink); }
+  .news-date { color: var(--dim); font-size: 12px; }
+  .news-title { color: var(--white); font-size: 16px; margin: 2px 0; font-family: 'Special Elite', serif; }
+  .news-preview { color: var(--text); font-size: 13px; }
+  .news-tag { display: inline-block; background: var(--accent); color: #fff; font-size: 10px; padding: 1px 5px; margin-right: 4px; }
+  .back-btn { background: #111822; border: 1px solid var(--accent); color: var(--text); padding: 4px 10px; cursor: pointer; font-family: 'VT323', monospace; font-size: 15px; margin-bottom: 8px; display: inline-block; transition: all 0.1s; }
+  .back-btn:hover { background: var(--accent); color: #fff; }
+  .contact-form { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { display: block; color: var(--pink); font-size: 13px; margin-bottom: 2px; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; background: #111922; border: 1px solid #2c3f5d; border-top: 1px solid #1b2d4b; border-left: 1px solid #1b2d4b; color: var(--text); padding: 5px 8px; font-family: 'VT323', monospace; font-size: 15px; outline: none; transition: border-color 0.1s; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); background: #111c2b; }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .submit-btn { background: var(--accent); color: #fff; border: 2px outset rgba(77,107,149,0.7); padding: 6px 20px; font-family: 'Special Elite', serif; font-size: 15px; cursor: pointer; letter-spacing: 1px; align-self: flex-start; transition: all 0.1s; }
+  .submit-btn:hover { background: var(--accent2); } .submit-btn:active { border-style: inset; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; }
+  .badge { width: 88px; height: 31px; background: #111922; border: 1px solid #324262; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--text); text-align: center; line-height: 1.2; cursor: pointer; transition: all 0.05s; }
+  .badge:hover { border-color: var(--accent); }
+  .badge.red { background: #171b24; color: #c19dbd; border-color: #5c6b8a; }
+  .badge.pink { background: #141825; color: var(--pink); border-color: #5d7aa9; }
+  .badge.green { background: #121a20; color: var(--green); border-color: #4d7a78; }
+  .badge.blue { background: #101523; color: #92a8d4; border-color: #243a6a; }
+  .cbox-message { border-bottom: 1px dashed #26334c; padding: 5px 0; font-size: 13px; }
+  .cbox-name { color: var(--pink); font-weight: bold; }
+  .cbox-time { color: var(--dim); font-size: 11px; }
+  .cbox-input { width: 100%; background: #111922; border: 1px inset #2a3b56; color: var(--text); padding: 3px; font-family: 'VT323', monospace; font-size: 14px; margin-top: 4px; }
+  .update-entry { border-bottom: 1px dashed #26334c; padding: 4px 0; font-size: 13px; }
+  .update-entry .date { color: var(--accent); font-size: 12px; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .blink { animation: blink 1s infinite; }
+  .rainbow { background: linear-gradient(90deg, rgba(127,158,188,0.95), rgba(77,107,149,0.95), rgba(47,77,124,0.95), rgba(25,43,79,0.95)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold; }
+  .success-msg { display: none; background: #101f28; border: 1px solid #3b5d71; color: var(--green); padding: 8px; font-size: 14px; text-align: center; }
+  hr.emo { border: none; border-top: 1px dashed var(--accent); margin: 8px 0; opacity: 0.5; }
+  .sparkle { position: fixed; pointer-events: none; font-size: 12px; animation: sparkle-fade 0.8s forwards; z-index: 9999; }
+  @keyframes sparkle-fade { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-20px) scale(0.5); } }
+  .page-title { font-family: 'Permanent Marker', cursive; font-size: 28px; color: var(--white); text-shadow: 2px 2px 0 var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 4px; margin-bottom: 10px; }
+  .img-box { background: #101822; border: 1px solid #2e405e; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--dim); }
+  .hobby-tag { display: inline-block; background: #121a26; border: 1px solid var(--accent); color: var(--pink); padding: 2px 8px; margin: 2px; font-size: 12px; }
+  .site-footer { background: #101822; border-top: 2px solid var(--accent); text-align: center; padding: 8px; font-size: 12px; color: var(--dim); margin-top: 8px; }
+  .site-footer a { color: var(--accent); text-decoration: none; }
+  .site-container {
+  width: 100%;
+  max-width: 1140px;
+  background-color: var(--bg);
+  border: 2px solid #35415a;
+  border-top: 2px solid #5c6d88;
+  border-left: 2px solid #5c6d88;
+  box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 20px rgba(47,77,124,0.15);
+}
+.shiny {
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #ff00cc,
+    #39ff14,
+    #00ccff,
+    #ff0033,
+    #ffffff
+  );
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shinyMove 2s linear infinite, glowPulse 1.5s infinite alternate;
+}
+
+/* gerakan shine */
+@keyframes shinyMove {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+
+/* glow dikit biar hidup */
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+  100% { text-shadow: 0 0 12px rgba(255,0,200,0.6); }
+}
+
+  /* GIF PANELS */
+  .gif-panel { background: url("bgboks.png") center/cover no-repeat, var(--panel); background-blend-mode: multiply; border: 2px solid #40506c; border-top: 2px solid #5c6d88; border-left: 2px solid #5c6d88; box-shadow: 2px 2px 0 #000, inset 0 0 0 1px rgba(255,255,255,0.08); overflow: hidden; }
+  .gif-grid { display: grid; grid-template-columns: 1fr; gap: 0; padding: 2px; background: #111c27; }
+  .gif-grid video.decor-video { width: 100%; height: 180px; object-fit: cover; border: 1px solid #1f304d; display: block; }
+
+  /* SHRINES GIF - taller display */
+  .shrines-grid { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 2px; background: #111c27; }
+  .shrines-grid img { width: 100%; height: 180px; object-fit: cover; border: 1px solid #1f304d; display: block; }
+
+  /* GALLERY */
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 10px; }
+  .gallery-item { position: relative; background: #101823; border: 2px solid #22354f; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
+  .gallery-item:hover { border-color: var(--accent); transform: scale(1.02); z-index: 10; }
+  .gallery-item img { width: 100%; height: 190px; object-fit: cover; display: block; filter: saturate(0.9) contrast(1.05); transition: filter 0.3s; }
+  .gallery-item:hover img { filter: saturate(1.1) contrast(1.1); }
+  .gallery-item.featured { grid-column: span 2; }
+  .gallery-item.featured img { height: 260px; }
+  .gallery-num { position: absolute; top: 4px; left: 4px; background: var(--accent); color: #fff; font-size: 10px; padding: 1px 5px; font-family: 'VT323', monospace; }
+  .gallery-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(16,24,35,0.95)); color: var(--pink); font-size: 12px; padding: 18px 6px 5px; font-family: 'Special Elite', serif; opacity: 0; transition: opacity 0.2s; }
+  .gallery-item:hover .gallery-label { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 80vw; max-height: 72vh; border: 3px solid var(--accent); box-shadow: 0 0 40px rgba(77,107,149,0.35); }
+  .lb-close { position: absolute; top: 14px; right: 20px; font-size: 30px; color: var(--pink); cursor: pointer; font-family: 'VT323', monospace; }
+  .lb-close:hover { color: var(--accent); }
+  .lb-caption { color: var(--dim); font-size: 13px; font-family: 'Special Elite', serif; }
+  .lb-nav { display: flex; gap: 10px; }
+  .lb-nav button { background: #101822; border: 1px solid var(--accent); color: var(--pink); padding: 4px 14px; cursor: pointer; font-family: 'VT323', monospace; font-size: 18px; }
+  .lb-nav button:hover { background: var(--accent); color: #fff; }
+
+  /* SPOTIFY */
+  .spotify-wrap { background: #091421; border: 1px solid #1f3049; padding: 3px; }
+  .spotify-wrap iframe { width: 100%; border: none; display: block; }
+
+  /* CUSTOM PLAYER */
+  .custom-player { background: #111a26; border: 2px solid #2e4568; padding: 10px; }
+  .player-display { background: #101822; border: 1px solid #2e4568; padding: 8px; margin-bottom: 8px; text-align: center; }
+  .player-song-title { color: var(--white); font-family: 'Special Elite', serif; font-size: 14px; margin-bottom: 2px; }
+  .player-artist { color: var(--dim); font-size: 12px; margin-bottom: 6px; }
+  .player-progress-bar { background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 0%, #263a5b 0%, #263a5b 100%); height: 3px; border-radius: 2px; overflow: hidden; cursor: pointer; }
+  .player-controls { display: flex; gap: 4px; justify-content: center; }
+  .player-btn { background: #101a26; border: 1px solid #2f436a; color: var(--text); padding: 6px 10px; cursor: pointer; font-size: 16px; transition: all 0.1s; font-family: 'VT323', monospace; }
+  .player-btn:hover { background: rgba(77,107,149,0.12); color: var(--white); border-color: #5d7bb0; }
+  .player-play { background: rgba(77,107,149,0.9); color: #fff; border: 1px solid #2c4d7f; }
+  .player-play:hover { background: rgba(47,77,124,0.95); }
+
+  /* Container untuk menempatkan pesan error di area bawah sidebar kanan */
+.error-msg-container {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Sesuaikan dengan tinggi area hitam */
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Gambar pesan komputer (msg.png) */
+.error-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+}
+
+/* GIF yang diletakkan di atas area hitam pada gambar msg.png */
+.overlay-gif {
+  position: absolute;
+  /* Sesuaikan koordinat top/left/width/height di bawah ini agar pas dengan kotak hitam di msg.png Anda */
+  top: 15%; 
+  left: 5%;
+  width: 90%;
+  height: 70%;
+  object-fit: cover;
+  z-index: 2;
+  mix-blend-mode: screen; /* Opsional: agar menyatu dengan estetika retro */
+}
+
+.top-marquee marquee {
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  animation: 
+    neonColor 1s infinite linear,
+    flicker 0.15s infinite,
+    glitch 0.8s infinite;
+}
+
+/* WARNA NEON */
+@keyframes neonColor {
+  0% { color: #ff00cc; text-shadow: 0 0 5px #ff00cc, 0 0 15px #ff00cc; }
+  25% { color: #39ff14; text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14; }
+  50% { color: #00ccff; text-shadow: 0 0 5px #00ccff, 0 0 15px #00ccff; }
+  75% { color: #ff0033; text-shadow: 0 0 5px #ff0033, 0 0 15px #ff0033; }
+  100% { color: #ff00cc; }
+}
+
+/* KEDIP */
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* GLITCH */
+@keyframes glitch {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0,0); }
+}
+
+/* BACKGROUND IKUT NYALA */
+.top-marquee {
+  animation: bgGlow 2s infinite alternate;
+}
+
+@keyframes bgGlow {
+  0% { background: #0c1420; }
+  100% { background: #1a0022; }
+}
+.navbar a:hover {
+  animation: neonHover 0.8s infinite alternate, glitch 0.5s infinite;
+  background: rgba(0,0,0,0.3);
+}
+
+.nav-list a:hover {
+  animation: neonHover 0.8s infinite alternate, glitch 0.5s infinite;
+  background: rgba(0,0,0,0.3);
+}
+
+@keyframes neonHover {
+  0% {
+    color: #ff00cc;
+    text-shadow: 0 0 5px #ff00cc, 0 0 15px #ff00cc, 0 0 25px #ff00cc;
+  }
+  25% {
+    color: #39ff14;
+    text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 25px #39ff14;
+  }
+  50% {
+    color: #00ccff;
+    text-shadow: 0 0 5px #00ccff, 0 0 15px #00ccff, 0 0 25px #00ccff;
+  }
+  75% {
+    color: #ff0033;
+    text-shadow: 0 0 5px #ff0033, 0 0 15px #ff0033, 0 0 25px #ff0033;
+  }
+  100% {
+    color: #ff00cc;
+  }
+}
+
+.blink-soft {
+  animation: blinkSoft 1.5s infinite;
+}
+
+@keyframes blinkSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0,0); }
+}
+@keyframes floatUp {
+  from { transform: translateY(0); opacity:1; }
+  to { transform: translateY(-120vh); opacity:0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #fff, #ff00cc, #fff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerMove 2s infinite;
+}
+
+@keyframes shimmerMove {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+.trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #ff00cc;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 8px #ff00cc;
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: scale(0.5); }
+}
+
+.panel {
+  animation: panelGlow 3s infinite alternate;
+}
+
+@keyframes panelGlow {
+  0% {
+    box-shadow: 2px 2px 0 #000, 0 0 5px rgba(77,107,149,0.2);
+  }
+  100% {
+    box-shadow: 2px 2px 0 #000, 0 0 15px rgba(77,107,149,0.6);
+  }
+
+  
+}
+
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLbBg(event)">
+  <div class="lb-close" onclick="closeLb()">✕ close</div>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-caption" id="lb-cap"></div>
+  <div class="lb-nav">
+    <button onclick="lbNav(-1);event.stopPropagation()">← prev</button>
+    <button onclick="lbNav(1);event.stopPropagation()">next →</button>
+  </div>
+</div>
+
+<!-- TOP MARQUEE -->
+<div class="site-container">
+<div class="top-marquee">
+  <marquee scrollamount="3">★ welcome to my little corner of the internet ★ this site is forever under construction ★ best viewed on desktop ★ no stealing my stuff ★ emo is not dead ★ scene forever ★ ★彡 neinajevv 彡★ ★ welcome to my little corner of the internet ★</marquee>
+</div>
+
+
+
+<!-- HEADER -->
+<div class="site-header">
+  <div class="header-gif-placeholder"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xzNDVvODM0MTIxZjl4YWsyOGRhanppaDhxYjAwYmY1MXUxYmNibSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WXKjq1ik2WVDBAjEEG/giphy.gif" alt="header gif"></div>
+  <div>
+    <div class="site-title">neinajevv</div>
+    <div class="site-subtitle">★ my world, my rules, my music ★</div>
+    <div style="font-size:12px;color:#030303;margin-top:2px;"></div>
+  </div>
+  <div class="header-right">
+    <div class="visitor-counter" id="visitor-count">000004</div>
+    <span class="visitor-label">visitors</span>
+    <div style="font-size:11px;color:var(--dim);margin-top:4px;">online since 2026</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <a href="#" class="active" onclick="showPage('home',this)">★ Home</a>
+  <a href="#" onclick="showPage('about',this)">★ About Me</a>
+  <a href="#" onclick="showPage('news',this)">★ News</a>
+  <a href="#" onclick="showPage('gallery',this)">★ Gallery</a>
+  <a href="#" onclick="showPage('contact',this)">★ Contact</a>
+</div>
+
+<div class="wrapper">
+
+  <!-- SIDEBAR LEFT -->
+  <div class="sidebar-left">
+
+    <div class="panel">
+      <div class="panel-title"><span class="shiny">✂ main</span></div>
+      <div class="panel-body" style="padding:0">
+        <ul class="nav-list">
+          <li><a href="#" onclick="showPage('home',null)">↳ home</a></li>
+          <li><a href="#" onclick="showPage('about',null)">↳ about me</a></li>
+          <li><a href="#" onclick="showPage('news',null)">↳ news</a></li>
+          <li><a href="#" onclick="showPage('gallery',null)">↳ gallery</a></li>
+          <li><a href="#" onclick="showPage('contact',null)">↳ contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FUN VIDEO -->
+    <div class="gif-panel">
+      <div class="panel-title"><span class="shiny">✂ hewwo!!! ꉂ(˵˃ ᗜ ˂˵)</span></div>
+      <div class="gif-grid">
+        <video class="decor-video" src="decor.mp4" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+
+    <!-- SHRINES GIFs -->
+    <div class="gif-panel">
+      <div class="panel-title"><span class="shiny">✂ rise n shine</span></div>
+      <div class="shrines-grid">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWluNnRjZTNqY2l3c25leXR5OGhrem9zZW92ZXM5NzUycTByOW50eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iL7dCbw7McSvuP9WMf/giphy.gif" alt="mcr" onerror="this.style.cssText='background:#111;height:80px;width:100%;aspect-ratio:5/4;display:block'">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- HOME -->
+    <div class="page active" id="page-home">
+      <div class="content-box">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div class="img-box" style="width:80px;height:80px;flex-shrink:0;"><img src="me.jfif" alt="profile" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div>
+            <p>Hi there! I am <span class="blink-soft" style="color:var(--accent)">★ NAJWA NADHIRA RAMADHANI ★</span> an Information Systems major who believes in the power of both logic and creativity. While I spend some of my time managing administrative reports, I also have a deep love for languages and the arts.</p>
+            <p>I’ve spent the last year serving as the Secretary at the Language Development Center (LDC) ITPLN. That role taught me how to keep things organized—from managing lab documentation to mastering Microsoft Excel spreadsheets without breaking a sweat. ٩(◕‿◕｡)۶</p>
+            <p>When I’m not diving into data or school projects, you’ll probably find me teaching English as a freelancer or working on my digital illustrations. My journey has taken me from being a high school Language Ambassador to designing mascots and teaching others.</p>
+          </div>
+        </div>
+        <hr class="emo">
+        <div style="background:#0d0000;border:1px solid #440000;padding:8px;font-size:13px;"><strong class="blink-soft" style="color:var(--accent)">⚠ Attention!!!:</strong> This website was created to complete the Web Programming Midterm Exam.</div>
+        <hr class="emo">
+        <p style="font-size:13px;color:#777">psst!! There are many more things in the left menu!! Dont hesitate to explore! >.<~</p>
+      </div>
+      <div class="content-box">
+        <div style="font-family:'Special Elite',serif;color:var(--pink);font-size:14px;margin-bottom:6px;">📝 latest news entry</div>
+        <div class="news-item" onclick="openDetail('news-1')">
+          <div class="news-date">may 01, 2026 · 02:34 AM</div>
+          <div class="news-title">Russia Scales down WWII Victory Parade, cites Ukrainan threat</div>
+          <div class="news-preview">The upcoming Victory Day parade in Moscow, scheduled for May 9th, will deviate significantly from tradition...</div>
+          <div style="margin-top:4px"><span class="news-tag">history</span><span class="news-tag">WWII</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="page" id="page-about">
+      <div class="content-box">
+        <div class="page-title">🖤 about me</div>
+        <div class="about-grid">
+          <div>
+            <div class="face-container"><img src="me2.png" class="face-photo"><img src="facevessel.png" class="face-frame"></div>            <div style="text-align:center;margin-top:6px;"><div style="color:var(--dim);font-size:11px;">@neinajevv</div></div>
+            <div class="hobby-tag">🎵 music</div><div class="hobby-tag">🎨 digital art</div><div class="hobby-tag">📚 manga</div><div class="hobby-tag">🕹️ gaming</div>
+          </div>
+          <div>
+            <table class="stat-table">
+              <tr><td>nama</td><td>Najwa Nadhira Ramadhani</td></tr><tr><td>umur</td><td>19 tahun</td></tr><tr><td>kota</td><td>Jakarta, ID</td></tr><tr><td>mbti</td><td>ISFJ-T</td></tr><tr><td>pronouns</td><td>she/her</td></tr><tr><td>languages</td><td>ID, EN, JP (beginner), DE (beginner)</td></tr><tr><td>hobbies</td><td>sleeping, drawing, reading, breathing</td></tr>
+            </table>
+          </div>
+        </div>
+        <hr class="emo">
+        <p>Hello!! I'm Najwa, 19 years old, based in Jakarta. I have a bunch of taste in music, from tiktok trendings to historical instruments... I also like to draw my alt characters that I showed on Gallery page!</p>
+        <p>Here, I can be myself without having to worry about engagement or followers. <span style="color:var(--pink)">♡</span></p>
+        <p>If you're here, maybe we share similar tastes. Feel free to reach out!</p>
+        <hr class="emo">
+        <div style="font-family:'Special Elite',serif;color:var(--pink);margin-bottom:4px;">✦ currently</div>
+        <div style="font-size:13px;padding-left:8px;">
+          <div>🎵 listening: <span style="color:var(--white)">Get Scared, whatsaheart, Evanescence.</span></div>
+          <div>📖 reading: <span style="color:var(--white)">Lackadaisy</span></div>
+          <div>🎮 playing: <span style="color:var(--white)">Underworld Office</span></div>
+          <div>📺 watching: <span style="color:var(--white)">Pokemon movie series</span></div>
+          <div>🐱 feeling: <span style="color:var(--white)">Midterm Exam, hope I'll pass well!!</span></div>
+        </div>
+      </div>
+      <div class="content-box">
+        <div style="font-family:'Special Elite',serif;color:var(--pink);font-size:14px;margin-bottom:6px;">✦ my manifestos</div>
+        <p>I pray for a sharp mind to excel in Information Systems and the energy to reach all my goals.</p>
+        <p>Help me stay on track with my studies and remain faithful and disciplined in my spiritual life.</p>
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div class="page" id="page-news">
+      <div class="content-box">
+        <div class="page-title">📝 News</div>
+        <p style="font-size:13px;color:var(--dim);margin-bottom:10px;">Klik pada salah satu berita untuk membaca lebih lanjut.</p>
+        <div class="news-item" onclick="openDetail('news-1')">
+          <div class="news-date">may 03, 2026 · 02:34 AM</div><span class="news-tag">history</span><span class="news-tag">WWII</span>
+          <div class="news-title">Russia scales down WWII Victory Parade, cites Ukrainan threat</div>
+          <div class="news-preview">The upcoming Victory Day parade in Moscow, scheduled for May 9th, will deviate significantly from tradition...</div>
+        </div>
+        <div class="news-item" onclick="openDetail('news-2')">
+          <div class="news-date">may 02, 2026 · 11:58 PM</div><span class="news-tag">Cat</span><span class="news-tag">Animal Protection</span>
+          <div class="news-title">Without a Mother, a Kuwuk Kitten Found in West Bali Forest</div>
+          <div class="news-preview">Two orphaned Kuwuk Cat kittens rescued in Bali are being cared for with minimal human contact so they can return to the wild.</div>
+        </div>
+        <div class="news-item" onclick="openDetail('news-3')">
+          <div class="news-date">may 01, 2026 · 03:12 AM</div><span class="news-tag">science</span><span class="news-tag">paleontology</span>
+          <div class="news-title">This 275-million-year-old animal had a twisted jaw like nothing alive today!</div>
+          <div class="news-preview">Paleontologists found a salamander-like jaw with outward-facing teeth and grater-like surfaces in ancient Gondwana remains.</div>
+        </div>
+        <div class="news-item" onclick="openDetail('news-4')">
+          <div class="news-date">apr 30, 2026 · 09:45 PM</div><span class="news-tag">Food</span><span class="news-tag">Europe</span>
+          <div class="news-title">7 Must-Try Traditional European Snacks</div>
+          <div class="news-preview">Grabbing a local street snack is the perfect way to experience the authentic flavors of each country.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALLERY (NEW) -->
+    <div class="page" id="page-gallery">
+      <div class="content-box">
+        <div class="page-title">🎨 my art / photos</div>
+        <p style="font-size:13px;color:var(--dim);margin-bottom:4px;">My illustrations! Click to see full image. Do not repost without permission!!</p>
+        <div style="font-size:11px;color:var(--dim);margin-bottom:10px;"><span class="news-tag">digital art</span><span class="news-tag">photography</span><span class="news-tag">misc</span></div>
+        <div class="gallery-grid">
+          <div class="gallery-item featured" onclick="openLb(0)">
+            <img src="1.png" alt="art 1">
+            <div class="gallery-num">#01</div>
+            <div class="gallery-label">✦ 1.png</div>
+          </div>
+          <div class="gallery-item" onclick="openLb(1)">
+            <img src="2.png" alt="art 2">
+            <div class="gallery-num">#02</div>
+            <div class="gallery-label">✦ 2.png</div>
+          </div>
+          <div class="gallery-item" onclick="openLb(2)">
+            <img src="3.png" alt="art 3">
+            <div class="gallery-num">#03</div>
+            <div class="gallery-label">✦ 3.png</div>
+          </div>
+          <div class="gallery-item" onclick="openLb(3)">
+            <img src="4.png" alt="art 4">
+            <div class="gallery-num">#04</div>
+            <div class="gallery-label">✦ 4.png</div>
+          </div>
+          <div class="gallery-item" onclick="openLb(4)">
+            <img src="5.png" alt="art 5">
+            <div class="gallery-num">#05</div>
+            <div class="gallery-label">✦ 5.png</div>
+          </div>
+        </div>
+        <hr class="emo">
+        <p style="font-size:12px;color:var(--dim);text-align:center;">semua karya adalah milik neinajevv · dilarang repost tanpa izin</p>
+      </div>
+    </div>
+
+    <!-- NEWS DETAIL -->
+    <div class="page" id="page-news-detail">
+      <div class="content-box">
+        <button class="back-btn" onclick="goBack()">← kembali</button>
+        <div id="detail-content"></div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="page" id="page-contact">
+      <div class="content-box">
+        <div class="page-title">📬 contact me</div>
+        <p style="font-size:13px;color:var(--dim);margin-bottom:10px;">Wanna chat? Have a question? Or just want to say hi? I love getting messages from people!! ♡</p>
+        <div style="font-family:'Special Elite',serif;color:var(--pink);margin-bottom:6px;font-size:14px;">✦ socials</div>
+        <div style="font-size:13px;padding-left:8px;margin-bottom:10px;">
+          <div>📸 instagram: <a href="https://www.instagram.com/njwndhrr/" target="_blank">@njwndhrr</a></div>
+          <div>💼 linkedin: <a href="https://www.linkedin.com/in/najwa-nadhira-ramadhani-1b1177337/" target="_blank">NajwaNR</a></div>
+          <div>📧 email: <a href="mailto:najwanadhiraramadhani@gmail.com" target="_blank">najwanadhiraramadhani@gmail.com</a></div>
+          <div>🎨 Vgen: <a href="https://vgen.co/neinajevv" target="_blank">neinajevv</a></div>
+        </div>
+        <hr class="emo">
+        <div style="font-family:'Special Elite',serif;color:var(--pink);margin-bottom:8px;font-size:14px;">✦ send me a message</div>
+        <div class="success-msg" id="success-msg">✓ Your message has been delivered!! I will reply ASAP ♡</div>
+        <div class="contact-form" id="contact-form">
+          <div class="form-group"><label>nama / username *</label><input type="text" placeholder="Enter name or username" id="contact-name"></div>
+          <div class="form-group"><label>email *</label><input type="email" placeholder="Your email (so I can reply)" id="contact-email"></div>
+          <div class="form-group"><label>topic</label><select id="contact-topic"><option>just saying hi!</option><option>link exchange</option><option>music recommendation</option><option>collaboration</option><option>other</option></select></div>
+          <div class="form-group"><label>message *</label><textarea placeholder="write ur message heree~ i'll read eventually hehe" id="contact-msg"></textarea></div>
+          <div style="font-size:11px;color:var(--dim);margin-top:-4px;">* required fields. I'll reply within 1-3 days</div>
+          <button class="submit-btn" onclick="submitForm()">✉ send message</button>
+        </div>
+        <hr class="emo">
+        <div style="font-family:'Special Elite',serif;color:var(--pink);margin-bottom:8px;font-size:14px;">✦ guestbook</div>
+        <div style="font-size:12px;color:var(--dim);margin-bottom:6px;">leave a message!! u can use any name! (≧◡≦)</div>
+        <div id="guestbook-entries">
+          <div class="cbox-message"><span class="cbox-name">Anachkaaaargh</span> <span class="cbox-time">2 days ago</span><div>omg ur site is so cool!! love the aesthetic ♡♡♡</div></div>
+          <div class="cbox-message"><span class="cbox-name">urnightcorelover</span> <span class="cbox-time">5 days ago</span><div>i love ur playlist!!</div></div>
+          <div class="cbox-message"><span class="cbox-name">velvetcake</span> <span class="cbox-time">1 week ago</span><div>omg are u opening commissions?</div></div>
+        </div>
+        <div style="margin-top:8px;">
+          <input class="cbox-input" id="gb-name" placeholder="your lovely name..." style="margin-bottom:4px;">
+          <input class="cbox-input" id="gb-msg" placeholder="leave a message~">
+          <button class="submit-btn" style="margin-top:4px;font-size:12px;padding:4px 12px;" onclick="addGuestbook()">post</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR RIGHT -->
+  <div class="sidebar-right">
+
+    <!-- PLAYLIST (SoundCloud, replaces last.fm + updates) -->
+    <div class="panel">
+      <div class="panel-title"><span class="shiny">🎵 playlist</span></div>
+      <div class="panel-body" style="padding:4px;">
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/whxxtsoev3r/sets/soft-instrumental&color=%23cc0033&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
+        </iframe>
+        <div style="font-size:10px;color:var(--dim);text-align:center;margin-top:2px;font-family:'Special Elite',serif;">soft instrumental · soundcloud</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span class="shiny"> ♫ current fav music</span></div>
+      <div class="panel-body" style="padding:5px">
+        <div class="custom-player">
+          <div class="player-display">
+            <div class="player-song-title">HEARTACHE</div>
+            <div class="player-artist">Desire4u, whatsaheart</div>
+            <div class="player-progress-bar"></div>
+          </div>
+          <div class="player-controls">
+            <button class="player-btn player-prev">⏮</button>
+            <button class="player-btn player-play">▶</button>
+            <button class="player-btn player-next">⏭</button>
+            <button class="player-btn player-link">🔗</button>
+          </div>
+          <audio id="audio-player" src="Desire4u, whatsaheart - HEARTACHE (SPOTISAVER).mp3" style="width:100%;margin-top:8px;"></audio>
+        </div>
+        <div id="player-nowplaying" style="text-align:center;font-size:10px;color:var(--dim);margin-top:2px;">Desire4u, whatsaheart - HEARTACHE</div>
+      </div>
+    </div>
+
+<!-- SIDEBAR RIGHT -->
+<div class="sidebar-right">
+    
+  
+    <div class="error-msg-container">
+      <img src="msg.jpg" alt="Error Message" class="error-bg">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamR4ZDNwamo5Zjg4dmc2YWtsOXR0b2xnbWg2YWRiOHNnN3hxb3pzMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/maNB0qAiRVAty/giphy.gif" class="overlay-gif">
+    </div>
+
+</div>
+    
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="site-footer">
+  <span class="rainbow">★ neinajevv ★</span><br>
+  made with 🖤 and too many late nights · <a href="#">back to top ↑</a><br>
+  <span style="font-size:10px;color:var(--dim);margin-top:2px;display:block;">best viewed at 1024px+ · hope we are great</span>
+</div>
+</div>
+
+<script>
+const entries = {
+  'home': { date:'may 01, 2026 · 02:34 AM', title:'Russia scales down WWII Victory Parade, cites Ukrainan threat', tags:['history','WWII'], content:`<p style="text-align:center;margin:12px 0;"><img src="parade.png" alt="Victory Day Parade" style="max-width:100%;border:1px solid #2f436a;"></p><p>The upcoming Victory Day parade in Moscow on May 9th is set to break a long-standing tradition by excluding all military hardware, such as tanks and missile systems, from the Red Square procession. The Kremlin has attributed this decision to heightened security concerns, specifically alleging a "full-scale terrorist threat" from Ukraine. Analysts suggest that scaling back the event is a strategic maneuver to deny Kyiv a high-profile target, especially as drone strikes within Russian territory have become increasingly frequent.</p><p>Despite these accusations, the Ukrainian government has explicitly denied any plans to target the civilian-heavy celebration. An advisor to President Volodymyr Zelenskyy clarified that Ukraine’s military operations are strictly limited to legitimate military infrastructure and that attacking non-military gatherings is not part of their strategy. This dismissal highlights the ongoing psychological and rhetorical battle between the two nations regarding the rules of engagement and the safety of civilian events.</p><p>Beyond immediate security risks, the decision also underscores the significant operational strain on the Russian military after more than four years of sustained conflict. Experts believe that the need to conserve armored vehicles for the front lines has outweighed the desire for a grand symbolic display. This marked reduction in scale—the first time in nearly twenty years that no armored units will be present—represents a notable shift from last year's lavish 80th-anniversary celebrations and reflects the evolving reality of Russia's tactical priorities.</p>` },
+  'news-1': { date:'may 01, 2026 · 02:34 AM', title:'Russia scales down WWII Victory Parade, cites Ukrainan threat', tags:['history','WWII'], content:`<p style="text-align:center;margin:12px 0;"><img src="parade.png" alt="Victory Day Parade" style="max-width:100%;border:1px solid #2f436a;"></p><p>The upcoming Victory Day parade in Moscow on May 9th is set to break a long-standing tradition by excluding all military hardware, such as tanks and missile systems, from the Red Square procession. The Kremlin has attributed this decision to heightened security concerns, specifically alleging a "full-scale terrorist threat" from Ukraine. Analysts suggest that scaling back the event is a strategic maneuver to deny Kyiv a high-profile target, especially as drone strikes within Russian territory have become increasingly frequent.</p><p>Despite these accusations, the Ukrainian government has explicitly denied any plans to target the civilian-heavy celebration. An advisor to President Volodymyr Zelenskyy clarified that Ukraine’s military operations are strictly limited to legitimate military infrastructure and that attacking non-military gatherings is not part of their strategy. This dismissal highlights the ongoing psychological and rhetorical battle between the two nations regarding the rules of engagement and the safety of civilian events.</p><p>Beyond immediate security risks, the decision also underscores the significant operational strain on the Russian military after more than four years of sustained conflict. Experts believe that the need to conserve armored vehicles for the front lines has outweighed the desire for a grand symbolic display. This marked reduction in scale—the first time in nearly twenty years that no armored units will be present—represents a notable shift from last year's lavish 80th-anniversary celebrations and reflects the evolving reality of Russia's tactical priorities.</p>` },
+  'news-2': { date:'apr 22, 2026 · 11:58 PM', title:'Without a Mother, a Kuwuk Kitten Found in West Bali Forest', tags:['Cat','Animal Protection'], content:`<p>Two orphaned female Kuwuk Cats (Prionailurus bengalensis) were recently rescued in Pejarakan Village, Buleleng, Bali, and are currently being cared for at the Umah Lumba rehabilitation center. Originally found by a dog and rescued by a local resident, the kittens were approximately three weeks old upon arrival. While one from the original litter unfortunately did not survive, the remaining two are reported to be in stable condition.</p><p style="text-align:center;margin:12px 0;"><img src="kuwuk.png" alt="Kuwuk Cats" style="max-width:100%;border:1px solid #2f436a;"><br><span style="font-size:11px;color:var(--dim);">source: https://mongabay.co.id/2025/09/04/tanpa-induk-anakan-kucing-kuwuk-ditemukan-di-hutan-bali-barat/</span></p><p>To ensure they can eventually return to the wild, the rehabilitation center has implemented strict protocols to minimize human contact. Only one specialized caretaker is permitted to handle them, and feeding is conducted using cloth barriers so the Kuwuk Cats do not bond with humans. Their health and daily activities are monitored remotely via CCTV to preserve their natural predatory instincts.</p><p>Medical staff are currently providing the kittens with specialized milk, soft meat, and vitamins every three hours. The success of their eventual release depends on their individual development, specifically their ability to hunt and recognize forest environments. Experts emphasize that Kuwuk Cats are naturally solitary animals that require a high level of wild instinct to survive in their native habitat.</p><p>Despite their small size, Kuwuk Cats play a vital role in the ecosystem as natural predators of rodents, helping farmers maintain agricultural balance. Experts warn against the illegal trade and crossbreeding of these protected animals with domestic cats, as such practices damage their genetic integrity and threaten their survival as a protected species under Indonesian law.</p>` },
+  'news-3': { date:'apr 10, 2026 · 03:12 AM', title:'This 275-million-year-old animal had a twisted jaw like nothing alive today!', tags:['science','paleontology'], content:`<p>Paleontologists from the Field Museum uncovered nine jawbones with a bizarre, permanent twist. While most animals have teeth pointing upward, Tanyka’s teeth pointed outward, while the inner surface of the jaw, covered in small, grater-like teeth, faced upward.</p><p>Even in its own era, Tanyka belonged to an ancient lineage of "stem tetrapods" that scientists believed had already vanished. Researchers compare it to a modern-day platypus because it retained primitive traits long after more modern species had evolved. While a full skeleton has not yet been found, experts estimate it was a salamander-like creature reaching up to three feet in length. It likely lived in freshwater lakes in Gondwana, the ancient supercontinent that included present-day South America.</p><p style="text-align:center;margin:12px 0;"><span style="font-size:11px;color:var(--dim);">source: https://www.sciencedaily.com/releases/2026/05/260501052858.htm</span></p>` },
+  'news-4': { 
+    date: 'mar 31, 2026 · 09:45 PM', 
+    title: '7 Must-Try Traditional European Snacks', 
+    tags: ['Food', 'Europe'], 
+    content: `
+        <p>Exploring Europe is just as much about the food as it is about the landmarks. While walking through historic squares or along scenic riverbanks, grabbing a local street snack is the perfect way to experience the authentic flavors of each country.</p>
+        
+        <h3>1. Currywurst (Germany)</h3>
+        <p>A true icon of German street food, especially in Berlin, Currywurst is a savory snack that perfectly captures the city's post-war culinary spirit. It consists of a steamed, then fried, pork sausage sliced into bite-sized pieces and smothered in a rich, spiced ketchup-based sauce topped with curry powder. Usually served on a paper tray with a side of crispy fries (pommes) or a small bread roll, it is the ultimate comfort food for locals and tourists alike.</p>
+        <p style="text-align:center;margin:12px 0;"><img src="Currywurst.png" alt="Currywurst" style="max-width:100%;border:1px solid #2f436a;"></p>
+        
+        <h3>2. Stroopwafel (The Netherlands)</h3>
+        <p>If you have a sweet tooth, the Dutch Stroopwafel is an absolute necessity. This snack features two thin, waffle-patterned wafers joined together by a layer of gooey, warm caramel syrup (stroop). For the best experience, place the wafer over a steaming cup of coffee or tea for a minute; the steam softens the waffle and melts the caramel inside, creating a heavenly, melt-in-your-mouth texture.</p>
+        <p style="text-align:center;margin:12px 0;"><img src="Stroopwafel.png" alt="Stroopwafel" style="max-width:100%;border:1px solid #2f436a;"></p>
+        
+        <h3>3. Churros (Spain)</h3>
+        <p>These deep-fried dough pastries are long, ridged, and crunchy on the outside while remaining light and airy inside. Often dusted with cinnamon sugar, they are traditionally served with a cup of Spanish hot chocolate—which is so thick and rich it feels more like a dipping sauce than a drink.</p>
+        
+        <h3>4. Trdelník (Czech Republic)</h3>
+        <p>Trdelník is made by wrapping dough around a rotating metal or wooden stick, grilling it until golden brown, and then rolling it in a mix of sugar and crushed walnuts. Modern versions are often filled with swirls of soft-serve ice cream.</p>
+        
+        <h3>5. Gelato (Italy)</h3>
+        <p>Authentic Italian Gelato contains less fat and less air than standard ice cream, which results in a much denser, silkier texture and more intense flavors. Enjoying a scoop while strolling through an Italian piazza is a quintessential experience.</p>
+        
+        <h3>6. Pastel de Nata (Portugal)</h3>
+        <p>Born in the monasteries of Lisbon, Pastel de Nata is a traditional egg custard tart that has become Portugal’s most famous sweet export. The pastry crust is incredibly flaky and crispy, while the center is filled with a creamy, sweet custard that is torched until the top has distinctive dark caramel spots. Sprinkling a bit of cinnamon or powdered sugar on top while it is still warm is the traditional way to eat it.</p>
+        <p style="text-align:center;margin:12px 0;"><img src="Pastel de Nata (Portugal).png" alt="Pastel de Nata" style="max-width:100%;border:1px solid #2f436a;"></p>
+        
+        <h3>7. Fish and Chips (United Kingdom)</h3>
+        <p>Fresh white fish is dipped in a crispy batter and deep-fried alongside thick-cut potato chips. Adding a splash of malt vinegar and a pinch of salt is the classic British way to enjoy this seaside favorite.</p>
+    ` 
+}
+};
+
+let prevPage = 'home';
+
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.navbar a').forEach(a => a.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('detail-nav').style.display = id==='news-detail'?'inline-block':'none';
+}
+
+function openDetail(key) {
+  prevPage = document.querySelector('.page.active').id.replace('page-','');
+  const e = entries[key]; if(!e) return;
+  document.getElementById('detail-content').innerHTML = `<div class="news-date">${e.date}</div>${e.tags.map(t=>`<span class="news-tag">${t}</span>`).join('')}<div class="page-title" style="margin-top:8px;">${e.title}</div><hr class="emo">${e.content}`;
+  showPage('news-detail', document.getElementById('detail-nav'));
+  document.getElementById('detail-nav').style.display='inline-block';
+}
+
+function goBack() { showPage(prevPage,null); document.getElementById('detail-nav').style.display='none'; }
+
+function submitForm() {
+  const n=document.getElementById('contact-name').value, em=document.getElementById('contact-email').value, m=document.getElementById('contact-msg').value;
+  if(!n||!em||!m){alert('Please fill all required fields >.< !!');return;}
+  document.getElementById('contact-form').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+
+function addGuestbook() {
+  const n=document.getElementById('gb-name').value, m=document.getElementById('gb-msg').value;
+  if(!n||!m) return;
+  const el=document.createElement('div'); el.className='cbox-message';
+  el.innerHTML=`<span class="cbox-name">${n}</span> <span class="cbox-time">just now</span><div>${m}</div>`;
+  document.getElementById('guestbook-entries').prepend(el);
+  document.getElementById('gb-name').value=''; document.getElementById('gb-msg').value='';
+}
+
+// Gallery lightbox
+const imgs = ['1.png','2.png','3.png','4.png','5.png'];
+let lbIdx = 0;
+function openLb(i) {
+  lbIdx=i;
+  document.getElementById('lb-img').src=imgs[i];
+  document.getElementById('lb-cap').textContent=`✦ ${imgs[i]} · ${i+1}/${imgs.length}`;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb() { document.getElementById('lightbox').classList.remove('open'); }
+function closeLbBg(e) { if(e.target===document.getElementById('lightbox')) closeLb(); }
+function lbNav(d) { lbIdx=(lbIdx+d+imgs.length)%imgs.length; document.getElementById('lb-img').src=imgs[lbIdx]; document.getElementById('lb-cap').textContent=`✦ ${imgs[lbIdx]} · ${lbIdx+1}/${imgs.length}`; }
+
+const sp=['✦','★','✸','✺','♡','☆'];
+document.addEventListener('mousemove',e=>{
+  if(Math.random()>0.92){
+    const el=document.createElement('div'); el.className='sparkle';
+    el.textContent=sp[Math.floor(Math.random()*sp.length)];
+    el.style.left=e.clientX+'px'; el.style.top=e.clientY+'px';
+    el.style.color=['#4d6b95','#7f9ebc','#f4f8ff','#94a8d6'][Math.floor(Math.random()*4)];
+    document.body.appendChild(el); setTimeout(()=>el.remove(),800);
+  }
+});
+
+// Visitor counter
+let cnt=17842;
+setInterval(()=>{ cnt++; document.getElementById('visitor-count').textContent=cnt.toString().padStart(6,'0'); },15000);
+
+// Audio player setup
+const audioPlayer = document.getElementById('audio-player');
+const playBtn = document.querySelector('.player-play');
+const prevBtn = document.querySelector('.player-prev');
+const nextBtn = document.querySelector('.player-next');
+const songTitle = document.querySelector('.player-song-title');
+const songArtist = document.querySelector('.player-artist');
+
+const tracks = [
+  { title:'HEARTACHE', artist:'Desire4u, whatsaheart', src:'Desire4u, whatsaheart - HEARTACHE (SPOTISAVER).mp3' },
+  { title:'I KNOW', artist:'whatsaheart', src:'whatsaheart - i know.mp3' }
+];
+let currentTrack = 0;
+
+function loadTrack(index) {
+  currentTrack = index;
+  const track = tracks[currentTrack];
+  songTitle.textContent = track.title;
+  songArtist.textContent = track.artist;
+  document.getElementById('player-nowplaying').textContent = `${track.artist} - ${track.title}`;
+  audioPlayer.src = track.src;
+  audioPlayer.load();
+  audioPlayer.play();
+  playBtn.textContent = '⏸';
+}
+
+function updateProgressBar() {
+  if(audioPlayer.duration) {
+    const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    document.querySelector('.player-progress-bar').style.background = `linear-gradient(90deg, var(--accent) 0%, var(--accent) ${percent}%, #17263c ${percent}%, #17263c 100%)`;
+  }
+}
+
+audioPlayer.addEventListener('timeupdate', updateProgressBar);
+audioPlayer.addEventListener('loadedmetadata', updateProgressBar);
+
+playBtn.addEventListener('click', () => {
+  if(audioPlayer.paused) {
+    audioPlayer.play();
+    playBtn.textContent = '⏸';
+  } else {
+    audioPlayer.pause();
+    playBtn.textContent = '▶';
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  const nextIndex = currentTrack === 0 ? tracks.length - 1 : currentTrack - 1;
+  loadTrack(nextIndex);
+});
+
+nextBtn.addEventListener('click', () => {
+  const nextIndex = (currentTrack + 1) % tracks.length;
+  loadTrack(nextIndex);
+});
+
+// Progress bar click to seek
+document.querySelector('.player-progress-bar').addEventListener('click', (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const percent = (e.clientX - rect.left) / rect.width;
+  audioPlayer.currentTime = percent * audioPlayer.duration;
+});
+
+document.addEventListener('mousemove', e => {
+  const el = document.createElement('div');
+  el.className = 'trail';
+
+  const symbols = ['✦','★','✧','✸','♡','☆'];
+  el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+  const colors = ['#ff00cc','#39ff14','#00ccff','#ff0033','#ffffff','#94a8d6'];
+  el.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+  el.style.left = e.clientX + 'px';
+  el.style.top = e.clientY + 'px';
+
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 600);
+});
+
+setInterval(()=>{
+  const el = document.createElement('div');
+  el.textContent = ['★','✦','♡','✧'][Math.floor(Math.random()*4)];
+  el.style.position='fixed';
+  el.style.left=Math.random()*100+'vw';
+  el.style.top='100%';
+  el.style.color='#ff00cc';
+  el.style.pointerEvents='none';
+  el.style.animation='floatUp 3s linear';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),3000);
+},800);
+
+// Initialize the default track
+loadTrack(currentTrack);
+</script>
+</body>
+</html>
